@@ -4,6 +4,8 @@ SCRIPT_NAME="`basename $0`"
 SCRIPT_DIR="$(dirname `realpath $0`)"
 CUR_DIR="`pwd`"
 
+[ -z "${FREEBSD_BRANCH}" ] && FREEBSD_BRANCH="master"
+
 # suck in the per-device options
 CFGNAME=$1
 shift
@@ -12,6 +14,13 @@ shift
 if [ -n "${X_BUILD_BASE_CFG}" ]; then
 	. ${SCRIPT_DIR}/../cfg/base/${X_BUILD_BASE_CFG} || exit 1
 fi
+
+# Override TPLINK_IMG_VERSION for stable and release branches
+BRANCHTYPE=$(echo ${FREEBSD_BRANCH} | awk -F'/' '{ print $1; }')
+[ -n "${TPLINK_IMG_VERSION}" -a "${BRANCHTYPE}" == "stable" ] &&
+	TPLINK_IMG_VERSION="FreeBSD-STABLE"
+[ -n "${TPLINK_IMG_VERSION}" -a "${BRANCHTYPE}" == "release" ] &&
+	TPLINK_IMG_VERSION="FreeBSD-RELEASE"
 
 # include the config variable generation code
 . ${SCRIPT_DIR}/../lib/cfg.sh || exit 1
