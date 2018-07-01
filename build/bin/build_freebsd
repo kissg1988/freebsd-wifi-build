@@ -25,7 +25,7 @@
 SCRIPT_NAME="`basename $0`"
 SCRIPT_DIR="$(dirname `realpath $0`)"
 CUR_DIR="`pwd`"
-FREEBSD_BRANCH="master"
+[ -z "${FREEBSD_BRANCH}" ] && FREEBSD_BRANCH="master"
 
 CFGNAME=$1
 shift
