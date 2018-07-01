@@ -19,12 +19,13 @@
 # using the same architecture (but different kernels)
 # can thus just use the same BUILDNAME.
 
-# Finally, this is designed to be used for building FreeBSD-HEAD
-# after Warner's "tbemd" build framework changes.
+# The script was created for FreeBSD-HEAD originally but
+# it's been patched to support the current stable branch (11.x), too.
 
 SCRIPT_NAME="`basename $0`"
 SCRIPT_DIR="$(dirname `realpath $0`)"
 CUR_DIR="`pwd`"
+FREEBSD_BRANCH="master"
 
 CFGNAME=$1
 shift
@@ -147,7 +148,8 @@ while [ -n "$1" ]; do
 		BUILD_FLAGS=""
 	fi
 
-	if [ "${TARGET_CROSS_TOOLCHAIN}" != "" ]; then
+	# This results in a failed build while building against FreeBSD 11.x
+	if [ "${TARGET_CROSS_TOOLCHAIN}" != "" -a "${FREEBSD_BRANCH}" == "master" ]; then
 		X_CROSS_TOOLCHAIN="CROSS_TOOLCHAIN=${TARGET_CROSS_TOOLCHAIN}"
 	fi
 
