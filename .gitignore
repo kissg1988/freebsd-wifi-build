@@ -1,0 +1,6 @@
+/programs/mktplinkfw/mktplinkfw
+/programs/mktplinkfw2/mktplinkfw2
+/programs/ubnt-mkfwimage/mkfwimage
+/programs/mktrxfw/loader.elf
+/programs/mktrxfw/*.o
+/programs/mktrxfw/mktrxfw
