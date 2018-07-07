@@ -259,8 +259,9 @@ ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/tcpdump
 
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/hostapd
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/hostapd_cli
-${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/wpa_supplicant
-${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/wpa_cli
+# bsdbox does not currently include these binaries
+#${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/wpa_supplicant
+#${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/wpa_cli
 
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/libexec/ld-elf.so.1 ${X_STAGING_FSROOT}/libexec
 
@@ -287,7 +288,9 @@ ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/gettytab ${X_STAGING_FSROOT}/c/etc
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/passwd ${X_STAGING_FSROOT}/c/etc
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/master.passwd ${X_STAGING_FSROOT}/c/etc
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/group ${X_STAGING_FSROOT}/c/etc
-${INSTALL_DEF_FILE} ${X_BASEDIR}/files/wpa_supplicant.conf ${X_STAGING_FSROOT}/c/etc
+# removed as WPA client functionality is rarely needed on a router
+# Also, bsdbox does not currently include the wpa_supplicant binary
+#${INSTALL_DEF_FILE} ${X_BASEDIR}/files/wpa_supplicant.conf ${X_STAGING_FSROOT}/c/etc
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/manifest ${X_STAGING_FSROOT}/c/etc/cfg
 ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.conf.default ${X_STAGING_FSROOT}/c/etc
 
