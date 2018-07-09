@@ -47,6 +47,7 @@ ${INSTALL_DEF_DIR} ${X_STAGING_FSROOT}
 ${INSTALL_DEF_DIR} ${X_STAGING_FSROOT}/c
 ${INSTALL_DEF_DIR} ${X_STAGING_FSROOT}/c/etc
 ${INSTALL_DEF_DIR} ${X_STAGING_FSROOT}/c/etc/cfg
+${INSTALL_DEF_DIR} ${X_STAGING_FSROOT}/c/etc/cron.d
 ${INSTALL_DEF_DIR} ${X_STAGING_FSROOT}/c/etc/rc.d
 ${INSTALL_DEF_DIR} ${X_STAGING_FSROOT}/c/etc/rc.d/base
 ${INSTALL_DEF_DIR} ${X_STAGING_FSROOT}/c/etc/rc.d/net
@@ -102,6 +103,11 @@ ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/reboot
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/kldload
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/kldunload
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/kldstat
+${INSTALL_DEF_BIN} ${X_DESTDIR}/sbin/ipfw ${X_STAGING_FSROOT}/sbin/
+
+# cron
+${INSTALL_DEF_BIN} ${X_DESTDIR}/usr/sbin/cron ${X_STAGING_FSROOT}/usr/sbin/
+${INSTALL_DEF_FILE} ${X_BASEDIR}/files/crontab ${X_STAGING_FSROOT}/c/etc/
 
 # ethernet switch
 ${INSTALL_DEF_BIN} ${X_DESTDIR}/sbin/etherswitchcfg ${X_STAGING_FSROOT}/sbin
