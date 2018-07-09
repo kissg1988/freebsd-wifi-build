@@ -52,7 +52,15 @@ cd "${BASEDIR}/src"
 # Copy customized build cfg
 #cp -f "${BASEDIR}/wr1043nd_custom" "${BASEDIR}/freebsd-wifi-build/build/cfg"
 
+# Patch bsdbox
+if [ ! -f "${BASEDIR}/.bsdbox_patched" ]
+then
+	git apply -v < ../freebsd-wifi-build/bsdbox_add-commands.patch
+	touch "${BASEDIR}/.bsdbox_patched"
+fi
+
 ../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}" cleanobj cleanroot
+rm -rf "${BASEDIR}/mfsroot/"{${FBSDWIFI_CFG},METALOG.${FBSDWIFI_CFG}*}
 ../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}"
 
 echo "*** DONE! ***"
