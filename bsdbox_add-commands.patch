@@ -1,0 +1,48 @@
+diff --git a/tools/bsdbox/Makefile b/tools/bsdbox/Makefile
+index 7189f43f092..9833eff7ee4 100644
+--- a/tools/bsdbox/Makefile
++++ b/tools/bsdbox/Makefile
+@@ -95,7 +95,7 @@ CRUNCH_LIBS+= -lm
+ .include "Makefile.base"
+ .include "Makefile.net"
+ .include "Makefile.hostapd"
+-#.include "Makefile.textproc"
++.include "Makefile.textproc"
+ .include "Makefile.login"
+ .include "Makefile.kld"
+ # telnet/telnetd are too broken to include as a crunchgen'ed binary,
+diff --git a/tools/bsdbox/Makefile.base b/tools/bsdbox/Makefile.base
+index 02749490551..97415d19e10 100644
+--- a/tools/bsdbox/Makefile.base
++++ b/tools/bsdbox/Makefile.base
+@@ -34,6 +34,9 @@ CRUNCH_BUILDTOOLS+=	bin/sh
+ CRUNCH_PROGS_usr.sbin+=	chown
+ CRUNCH_ALIAS_chown=	chgrp
+ 
++# chmod
++CRUNCH_PROGS_bin+=	chmod
++
+ # Basic filesystem stuff
+ CRUNCH_PROGS_sbin+=	mount umount
+ 
+@@ -42,8 +45,8 @@ CRUNCH_PROGS_sbin+=	mount umount
+ #CRUNCH_PROGS_usr.bin+=	grep
+ 
+ # less/more
+-#CRUNCH_PROGS_usr.bin+=	less
+-#CRUNCH_ALIAS_less=	more
++CRUNCH_PROGS_usr.bin+=	less
++CRUNCH_ALIAS_less=	more
+ 
+ # passwd
+ CRUNCH_PROGS_usr.bin+=	passwd
+diff --git a/tools/bsdbox/Makefile.textproc b/tools/bsdbox/Makefile.textproc
+index a913d460597..ed13dc21d07 100644
+--- a/tools/bsdbox/Makefile.textproc
++++ b/tools/bsdbox/Makefile.textproc
+@@ -18,3 +18,5 @@ CRUNCH_PROGS_usr.bin+=	sed
+ #CRUNCH_PROGS_usr.bin+=	vi
+ 
+ CRUNCH_PROGS_usr.bin+=	ee
++# a small gift for vi users :)
++CRUNCH_ALIAS_ee=	vi
