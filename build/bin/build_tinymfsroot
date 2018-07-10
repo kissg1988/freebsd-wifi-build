@@ -241,7 +241,7 @@ ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/pam.d/sshd ${X_STAGING_FSROOT}/c/etc/pam.
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/pam.d/su ${X_STAGING_FSROOT}/c/etc/pam.d
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/pam.d/xdm ${X_STAGING_FSROOT}/c/etc/pam.d
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/pam.d/login ${X_STAGING_FSROOT}/c/etc/pam.d
-${INSTALL_DEF_FILE} ${X_BASEDIR}/files/pam.d/telnetd ${X_STAGING_FSROOT}/c/etc/pam.d
+#${INSTALL_DEF_FILE} ${X_BASEDIR}/files/pam.d/telnetd ${X_STAGING_FSROOT}/c/etc/pam.d
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/pam.d/other ${X_STAGING_FSROOT}/c/etc/pam.d
 ${INSTALL_DEF_FILE} ${X_BASEDIR}/files/pam.d/system ${X_STAGING_FSROOT}/c/etc/pam.d
 
@@ -257,8 +257,8 @@ ${INSTALL_SUID_BIN} ${X_DESTDIR}/usr/bin/su ${X_STAGING_FSROOT}/usr/bin
 #install ${X_DESTDIR}/usr/lib/libcom_err.so.5 ${X_STAGING_FSROOT}/usr/lib
 #install ${X_DESTDIR}/usr/lib/libroken.so.10 ${X_STAGING_FSROOT}/usr/lib
 
-${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/inetd
-${INSTALL_DEF_FILE} ${X_BASEDIR}/files/inetd.conf ${X_STAGING_FSROOT}/c/etc
+#${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/inetd
+#${INSTALL_DEF_FILE} ${X_BASEDIR}/files/inetd.conf ${X_STAGING_FSROOT}/c/etc
 #install ${X_DESTDIR}/usr/libexec/telnetd ${X_STAGING_FSROOT}/usr/libexec/
 
 # networking
