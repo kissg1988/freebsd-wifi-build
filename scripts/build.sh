@@ -10,6 +10,10 @@
 export FREEBSD_BRANCH="release/11.2.0"
 # name of freebsd-wifi configuration file to use
 export FBSDWIFI_CFG="tl-wr1043nd"
+# targets to build - for a list of possible targets, see ./build/bin/build
+export FBSDWIFI_TARGETS="tinymfsroot makepkgs addpkgs fsimage tplink"
+# packages to be included in the build
+export X_PACKAGELIST="dropbear dnsmasq lua"
 #####################
 
 if [ ! -x $(which sudo) ]
@@ -55,12 +59,12 @@ cd "${BASEDIR}/src"
 # Patch bsdbox
 if [ ! -f "${BASEDIR}/.bsdbox_patched" ]
 then
-	git apply -v < ../freebsd-wifi-build/bsdbox_add-commands.patch
+	git apply -v < ../freebsd-wifi-build/bsdbox_tinymfsroot.patch
 	touch "${BASEDIR}/.bsdbox_patched"
 fi
 
 ../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}" cleanobj cleanroot
 rm -rf "${BASEDIR}/mfsroot/"{${FBSDWIFI_CFG},METALOG.${FBSDWIFI_CFG}*}
-../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}"
+../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}" "${FBSDWIFI_TARGETS}"
 
 echo "*** DONE! ***"
