@@ -36,6 +36,21 @@ index 02749490551..97415d19e10 100644
  
  # passwd
  CRUNCH_PROGS_usr.bin+=	passwd
+diff --git a/tools/bsdbox/Makefile.net b/tools/bsdbox/Makefile.net
+index ed39decd4ac..917e7d80762 100644
+--- a/tools/bsdbox/Makefile.net
++++ b/tools/bsdbox/Makefile.net
+@@ -8,8 +8,8 @@ CRUNCH_PROGS_sbin+=	route ping
+ CRUNCH_PROGS_usr.sbin+=	arp
+ 
+ # inetd
+-CRUNCH_PROGS_usr.sbin+=	inetd
+-CRUNCH_LIBS+=	-lwrap
++#CRUNCH_PROGS_usr.sbin+=	inetd
++#CRUNCH_LIBS+=	-lwrap
+ 
+ #.if ${MK_INET6_SUPPORT} != "no"
+ #CRUNCH_PROGS_sbin+= ping6
 diff --git a/tools/bsdbox/Makefile.textproc b/tools/bsdbox/Makefile.textproc
 index a913d460597..ed13dc21d07 100644
 --- a/tools/bsdbox/Makefile.textproc
