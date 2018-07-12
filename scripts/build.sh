@@ -11,7 +11,7 @@ export FREEBSD_BRANCH="release/11.2.0"
 # name of freebsd-wifi configuration file to use
 export FBSDWIFI_CFG="tl-wr1043nd"
 # targets to build - for a list of possible targets, see ./build/bin/build
-export FBSDWIFI_TARGETS="tinymfsroot makepkgs addpkgs fsimage tplink"
+export FBSDWIFI_TARGETS="buildworld buildkernel installworld installkernel distribution tinymfsroot makepkgs addpkgs fsimage tplink"
 # packages to be included in the build
 export X_PACKAGELIST="dropbear dnsmasq lua"
 #####################
