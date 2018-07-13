@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash -eu
 
-# NOTE: this script should be placed in the parent directory of the dir where freebsd-wifi-build is residing, ie.:
+# NOTE: this script should be placed in the parent directory of the dir where freebsd-wifi-build resides, ie.:
 # | freebsd_build -> place this script here
 # |-- freebsd-wifi-build
 # |-- src
@@ -14,6 +14,10 @@ export FBSDWIFI_CFG="tl-wr1043nd"
 export FBSDWIFI_TARGETS="buildworld buildkernel installworld installkernel distribution tinymfsroot makepkgs addpkgs fsimage tplink"
 # packages to be included in the build
 export X_PACKAGELIST="dropbear dnsmasq lua"
+# prefix for crossbuild binaries
+export X_PKG_CROSS_COMPILE="mips-unknown-freebsd11.1"
+# host flags for configuring packages
+export X_PKG_CONFIGURE_HOSTFLAGS="--host=mips-unknown-freebsd11.1"
 #####################
 
 if [ ! -x $(which sudo) ]
