@@ -12,4 +12,4 @@ PKG_INSTALL_BUILD_FLAGS='MULTI=1'
 # doesn't get expanded right when it gets handed to gmake and terrible things
 # happen.
 
-PKG_PRE_BUILD_PATCHLIST="patch-Makefile.in"
+PKG_PRE_BUILD_PATCHLIST="patch-Makefile.in patch-configure"
