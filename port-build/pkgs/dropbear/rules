@@ -5,6 +5,14 @@ PKGDISTFILE=https://matt.ucc.asn.au/dropbear/releases/dropbear-${PKGVERSION}.tar
 PKGDISTFILE_SUM_SHA512=82323279f7e78c366ba1ea07ff242259132b2576122429f54326518dd6092aba8ae5de4a0b8a3cef7efc3507015741abe2ac23376c03b40b247527da7a88120e
 PKGWORKSUBDIR=dropbear-${PKGVERSION}
 USE_CONFIGURE=YES
+
+# Using hardened build flags might cause the resulting binary fail to
+# execute when using certain versions of ld
+# See https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=204118#c5
+# Related error messages are "Cannot execute shared object" and
+# "Exec format error"
+PKG_MAKE_CONFIGURE_FLAGS='--disable-harden'
+
 PKG_MAKE_BUILD_FLAGS='MULTI=1'
 PKG_INSTALL_BUILD_FLAGS='MULTI=1'
 
