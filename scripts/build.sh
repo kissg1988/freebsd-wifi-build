@@ -13,11 +13,11 @@ export FBSDWIFI_CFG="tl-wr1043nd"
 # targets to build - for a list of possible targets, see ./build/bin/build
 export FBSDWIFI_TARGETS="buildworld buildkernel installworld installkernel distribution tinymfsroot makepkgs addpkgs fsimage tplink"
 # packages to be included in the build
-export X_PACKAGELIST="dropbear dnsmasq lua"
+export X_PACKAGELIST="dropbear dnsmasq"
 # prefix for crossbuild binaries
 export X_PKG_CROSS_COMPILE="mips-unknown-freebsd11.1"
 # host flags for configuring packages
-export X_PKG_CONFIGURE_HOSTFLAGS="--host=mips-unknown-freebsd11.1"
+export X_PKG_CONFIGURE_HOSTFLAGS="--host=mips-unknown-freebsd11.1 AR=mips-unknown-freebsd11.1-ar RANLIB=mips-unknown-freebsd11.1-ranlib STRIP=mips-unknown-freebsd11.1-strip"
 #####################
 
 if [ ! -x $(which sudo) ]
@@ -68,7 +68,8 @@ then
 fi
 
 ../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}" cleanobj cleanroot
-rm -rf "${BASEDIR}/mfsroot/"{${FBSDWIFI_CFG},METALOG.${FBSDWIFI_CFG}*}
+[ -d "${BASEDIR}/mfsroot" ] &&
+	rm -rf "${BASEDIR}/mfsroot/"{${FBSDWIFI_CFG},METALOG.${FBSDWIFI_CFG}*}
 ../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}" "${FBSDWIFI_TARGETS}"
 
 echo "*** DONE! ***"
