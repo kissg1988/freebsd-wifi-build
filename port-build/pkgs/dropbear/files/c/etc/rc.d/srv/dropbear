@@ -3,14 +3,13 @@
 # XXX ideally these will be installed as part of the package;
 # I'll do that later.
 
-. /etc/rc.subr
-. /etc/rc.conf.default
-. /etc/cfg/rc.conf
-
 # dropbear_cmd_options
 # dropbear_listen_address="ip:port"
 dropbear_cmd_options="-R"
 
+. /etc/rc.subr
+. /etc/rc.conf.default
+. /etc/cfg/rc.conf
 
 case $1 in
 	'start')
