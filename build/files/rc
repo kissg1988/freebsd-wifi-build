@@ -17,5 +17,13 @@ ln -s /usr/share/misc/termcap /etc/
 # create root home directory
 mkdir -p /var/root
 
+# create a default profile
+cat > /var/root/.profile <<EOF
+PS1='root@\h:\w # '; export PS1
+PAGER=less; export PAGER
+EDITOR=ee; export EDITOR
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin; export PATH
+EOF
+
 echo "*** Starting rc2 ..."
 exec /etc/rc2
