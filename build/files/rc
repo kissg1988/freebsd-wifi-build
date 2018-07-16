@@ -14,5 +14,8 @@ cp -a /c/etc/ /etc
 
 ln -s /usr/share/misc/termcap /etc/
 
+# create root home directory
+mkdir -p /var/root
+
 echo "*** Starting rc2 ..."
 exec /etc/rc2
