@@ -14,6 +14,7 @@ USE_CONFIGURE=YES
 PKG_MAKE_CONFIGURE_FLAGS='--disable-harden'
 
 PKG_MAKE_BUILD_FLAGS='MULTI=1'
+X_PKG_CFLAGS="-DDO_MOTD"
 PKG_INSTALL_BUILD_FLAGS='MULTI=1'
 
 # I can't seem to put PACKAGES="" into the build_flags variables above; it
