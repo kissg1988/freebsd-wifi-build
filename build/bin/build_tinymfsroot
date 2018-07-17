@@ -107,7 +107,6 @@ ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/kldload
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/kldunload
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/kldstat
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/uname
-${INSTALL_DEF_BIN} ${X_DESTDIR}/usr/bin/whoami ${X_STAGING_FSROOT}/usr/bin/
 ${INSTALL_DEF_BIN} ${X_DESTDIR}/sbin/ipfw ${X_STAGING_FSROOT}/sbin/
 
 # cron

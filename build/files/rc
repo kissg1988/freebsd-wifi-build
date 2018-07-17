@@ -18,14 +18,14 @@ ln -s /usr/share/misc/termcap /etc/
 mkdir -p /var/root
 
 # create a default profile
-cat > /var/root/.profile <<EOF
-PS1='\u@\h:\w # '; export PS1
+cat > /var/root/.profile <<'EOF'
+PS1='root@\h:\w \$'; export PS1
 PAGER=less; export PAGER
 EDITOR=ee; export EDITOR
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin; export PATH
 
 # warn about empty password
-if [ `grep '^root:' /etc/master.passwd | awk -F':' '{ print $2; }'` == "" ]; then
+if [ -z `grep '^root:' /etc/master.passwd | awk -F':' '{ print $2; }'` ]; then
 	echo "*************** SECURITY WARNING *****************"
 	echo "There's no password specified for the root account!\nPlease set a password now by issuing \"passwd\"."
 	echo "To save the password to flash, run \"cfg_save\"."
