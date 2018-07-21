@@ -218,6 +218,7 @@ ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/pam_group.so ${X_STAGING_FSROOT}/usr/lib
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/pam_lastlog.so ${X_STAGING_FSROOT}/usr/lib
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/pam_login_access.so ${X_STAGING_FSROOT}/usr/lib
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/pam_nologin.so ${X_STAGING_FSROOT}/usr/lib
+${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/pam_passwdqc.so ${X_STAGING_FSROOT}/usr/lib
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/pam_permit.so ${X_STAGING_FSROOT}/usr/lib
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/pam_rhosts.so ${X_STAGING_FSROOT}/usr/lib
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/pam_rootok.so ${X_STAGING_FSROOT}/usr/lib
