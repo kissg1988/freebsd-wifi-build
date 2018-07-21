@@ -22,8 +22,6 @@ set -e
 # firewall_nat_log="YES"
 # firewall_nat_block_lan_wan="lan_ifname"
 
-# firewall rules (TODO)
-
 firewall_flush()
 {
 	ipfw -f flush
@@ -85,9 +83,8 @@ firewall_nat_start()
 
 firewall_start()
 {
-	# For now, assume an open firewall.
-	# Yes, this should be configurable.
-	ipfw add 65500 allow ip4 from any to any
+	# Include firewall configuration file
+	. /etc/cfg/firewall.conf
 }
 
 case $1 in
