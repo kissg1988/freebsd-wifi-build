@@ -36,6 +36,10 @@ firewall_nat_start()
 		return 0
 	fi
 
+	# Be more strict so that matching against the NAT rule does not
+	# automatically lets the traffic through
+	/sbin/sysctl net.inet.ip.fw.one_pass=0
+
 	# Ok, we have one global NAT table for now, so
 	# configure it up.
 	fw_nat_cfg=""
