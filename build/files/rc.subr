@@ -76,7 +76,8 @@ get_if_var()
 	local _if _punct _punct_c _var _default prefix suffix
 
 	if [ $# -ne 2 -a $# -ne 3 ]; then
-		err 3 'USAGE: get_if_var name var [default]'
+		echo 'USAGE: get_if_var name var [default]'
+		return 3
 	fi
 
 	_if=$1
@@ -110,4 +111,37 @@ check_if_vars()
 		shift
 	done
 	return 1
+}
+
+# set_etherswitch_pvids device_number list_of_ports list_of_pvids
+#	Configures the PVIDs for the ports of an etherswitch device
+#	The port and PVID numbers must be separated by IFS characters (space, tab or newline, by default)
+#
+set_etherswitch_pvids()
+{
+	if [ $# -ne 3 ]; then
+		echo "*** ERROR: set_etherswitch_pvids() needs 3 arguments but $# given"
+		return 1
+	fi
+
+	local _ethswitchnum _portlist _pvidlist _nports _npvids _port _pvid
+
+	_ethswitchnum="$1"
+	_portlist="$2"
+	_pvidlist="$3"
+	_nports=0
+	_npvids=0
+
+	for _port in ${_portlist}; do _nports=$(( _nports + 1 )); done
+	for _pvid in ${_pvidlist}; do _npvids=$(( _npvids + 1 )); done
+
+	if [ ${_nports} -ne ${_npvids} ]; then
+		echo "*** ERROR: port list and pvid list must be of equal length."
+		return 1
+	fi
+
+	set ${_pvidlist}
+	for _port in ${_portlist}; do
+		eval netif_etherswitch${_ethswitchnum}_port${_port}_pvid="$1"; shift
+	done
 }
