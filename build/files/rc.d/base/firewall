@@ -11,6 +11,10 @@ set -e
 
 # variables:
 #
+# firewall_block_reserved="YES"
+#	block reserved subnets that should not be routed to the internet
+#	(eg. RFC1918 subnets, test networks, multicast addresses)
+#
 # NAT:
 #
 # firewall_nat_enable="YES"
