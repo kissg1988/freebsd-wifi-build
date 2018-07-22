@@ -78,6 +78,9 @@ etherswitch_vlangrouplist=`get_if_var $swname netif_IF_vlangrouplist`
 
 case $cmd in
 	'start')
+		[ "${etherswitch_enable}" != "YES" ] && \
+			return 0
+
 		echo "*** Interface: ${swname}: start"
 
 		# Configure mode
@@ -97,6 +100,9 @@ case $cmd in
 		exit 0
 	;;
 	'stop')
+		[ "${etherswitch_enable}" != "YES" ] && \
+			return 0
+
 		echo "*** Interface: ${swname}: stop"
 		echo "*** Interface: ${swname}: done"
 		exit 0

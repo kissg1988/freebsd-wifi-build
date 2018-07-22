@@ -38,6 +38,9 @@ interface_ipv4_netmask=`get_if_var $ifname netif_IF_ipv4_netmask`
 
 case $cmd in
 	'start')
+		[ "${interface_enable}" != "YES" ] && \
+			return 0
+
 		echo "*** Interface: ${ifname}: start"
 		ifconfig ${interface_name} create vlan ${interface_vlanid} vlandev ${interface_parent} || exit 1
 		ifconfig ${interface_name} up
@@ -51,6 +54,9 @@ case $cmd in
 		exit 0
 	;;
 	'stop')
+		[ "${interface_enable}" != "YES" ] && \
+			return 0
+
 		echo "*** Interface: ${ifname}: stop"
 		ifconfig ${interface_name} down
 		ifconfig ${interface_name} destroy

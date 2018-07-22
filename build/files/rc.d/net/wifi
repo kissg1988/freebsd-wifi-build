@@ -74,6 +74,9 @@ netif_wifi_dwds_bridgeif="`get_if_var $ifname netif_IF_wifi_dwds_bridgeif ''`"
 
 case $cmd in
 	'start')
+		[ "${netif_enable}" != "YES" ] && \
+			return 0
+
 		echo "*** Interface: ${ifname}: start"
 
 		# Create a VAP
@@ -205,6 +208,9 @@ EOF
 		exit 0
 	;;
 	'stop')
+		[ "${netif_enable}" != "YES" ] && \
+			return 0
+
 		echo "*** Interface: ${ifname}: stop"
 
 		# If DWDS is enabled, kill wlanwds
