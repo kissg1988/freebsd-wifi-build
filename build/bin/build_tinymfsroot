@@ -378,12 +378,16 @@ ${INSTALL_DEF_BIN} ${X_STAGING_TMPDIR}/board.cfg ${X_STAGING_FSROOT}/c/etc
 
 # Local board rc.conf file - with system defaults
 cat ${X_BASEDIR}/files/rc.conf | sed "s|@DEF_ETH@|${X_CFG_DEFAULT_ETHER}|g" \
-    | sed "s|@DEF_HOSTNAME@|${X_CFG_DEFAULT_HOSTNAME}|" \
+    | sed "s|@DEF_HOSTNAME@|${X_CFG_DEFAULT_HOSTNAME}|g" \
+    | sed "s|@DEF_WAN@|${X_CFG_DEFAULT_WAN}|g" \
+    | sed "s|@DEF_WAN_TYPE@|${X_CFG_DEFAULT_WAN_TYPE}|g" \
+    | sed "s|@DEF_WAN_VLANID@|${X_CFG_DEFAULT_WAN_VLANID}|g" \
+    | sed "s|@DEF_WAN_PARENT@|${X_CFG_DEFAULT_WAN_PARENT}|g" \
     > ${X_STAGING_TMPDIR}/rc.conf
 ${INSTALL_DEF_FILE} ${X_STAGING_TMPDIR}/rc.conf ${X_STAGING_FSROOT}/c/etc/cfg/
 
 # Set the console tty
-cat ${X_BASEDIR}/files/ttys | sed "s|@DEF_TTY@|${X_CFG_DEFAULT_TTY}|" \
+cat ${X_BASEDIR}/files/ttys | sed "s|@DEF_TTY@|${X_CFG_DEFAULT_TTY}|g" \
     > ${X_STAGING_TMPDIR}/ttys
 ${INSTALL_DEF_FILE} ${X_STAGING_TMPDIR}/ttys ${X_STAGING_FSROOT}/c/etc/
 
