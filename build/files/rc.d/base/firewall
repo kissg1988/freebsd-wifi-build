@@ -84,7 +84,7 @@ firewall_nat_start()
 firewall_start()
 {
 	# Include firewall configuration file
-	. /etc/cfg/firewall.conf
+	. /etc/firewall.conf
 }
 
 case $1 in
