@@ -15,9 +15,9 @@ export FBSDWIFI_TARGETS="buildworld buildkernel installworld installkernel distr
 # packages to be included in the build
 export X_PACKAGELIST="dropbear dnsmasq"
 # prefix for crossbuild binaries
-export X_PKG_CROSS_COMPILE="mips-unknown-freebsd11.1"
+export X_PKG_CROSS_COMPILE="mips-unknown-freebsd11.2"
 # host flags for configuring packages
-export X_PKG_CONFIGURE_HOSTFLAGS="--host=mips-unknown-freebsd11.1 AR=mips-unknown-freebsd11.1-ar RANLIB=mips-unknown-freebsd11.1-ranlib STRIP=mips-unknown-freebsd11.1-strip"
+export X_PKG_CONFIGURE_HOSTFLAGS="--host=mips-unknown-freebsd11.2 AR=mips-unknown-freebsd11.2-ar RANLIB=mips-unknown-freebsd11.2-ranlib STRIP=mips-unknown-freebsd11.2-strip"
 #####################
 
 if [ ! -x $(which sudo) ]
@@ -70,6 +70,8 @@ fi
 ../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}" cleanobj cleanroot
 [ -d "${BASEDIR}/mfsroot" ] &&
 	rm -rf "${BASEDIR}/mfsroot/"{${FBSDWIFI_CFG},METALOG.${FBSDWIFI_CFG}*}
+[ -d "${BASEDIR}/pkgbuild" ] && rm -rf "${BASEDIR}/pkgbuild"
+[ -d "${BASEDIR}/pkgdir" ] && rm -rf "${BASEDIR}/pkgdir"
 ../freebsd-wifi-build/build/bin/build "${FBSDWIFI_CFG}" "${FBSDWIFI_TARGETS}"
 
 echo "*** DONE! ***"
