@@ -27,6 +27,7 @@ else
 fi
 
 # At this point a base configuration file exists in /etc/cfg/rc.conf.
+. /etc/rc.subr
 . /etc/rc.conf.default
 . /etc/cfg/rc.conf
 
