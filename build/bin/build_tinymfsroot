@@ -378,6 +378,7 @@ ${INSTALL_DEF_BIN} ${X_STAGING_TMPDIR}/board.cfg ${X_STAGING_FSROOT}/c/etc
 
 # Local board rc.conf file - with system defaults
 cat ${X_BASEDIR}/files/rc.conf | sed "s|@DEF_ETH@|${X_CFG_DEFAULT_ETHER}|g" \
+    | sed "s|@DEF_WIFI@|${X_CFG_DEFAULT_WIFI}|g" \
     | sed "s|@DEF_HOSTNAME@|${X_CFG_DEFAULT_HOSTNAME}|g" \
     | sed "s|@DEF_WAN@|${X_CFG_DEFAULT_WAN}|g" \
     | sed "s|@DEF_WAN_ENABLE@|${X_CFG_DEFAULT_WAN_ENABLE}|g" \
