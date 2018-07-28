@@ -135,6 +135,7 @@ ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/bin/sleep
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/bin/hostname
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/bin/mkdir
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/bin/kill
+${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/bin/pkill
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/bin/mv
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/bin/expr
 
@@ -273,6 +274,7 @@ ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/sbin/ping
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/bin/netstat
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/arp
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/tcpdump
+${INSTALL_DEF_BIN} ${X_DESTDIR}/usr/sbin/ppp ${X_STAGING_FSROOT}/usr/sbin
 
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/hostapd
 ${INSTALL_DEF_LINK} /sbin/bsdbox ${X_STAGING_FSROOT}/usr/sbin/hostapd_cli
@@ -285,12 +287,21 @@ ${INSTALL_DEF_LIB} ${X_DESTDIR}/libexec/ld-elf.so.1 ${X_STAGING_FSROOT}/libexec
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libc.so.7 ${X_STAGING_FSROOT}/lib
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libcrypt.so.5 ${X_STAGING_FSROOT}/lib
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libutil.so.9 ${X_STAGING_FSROOT}/lib
-${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/lib80211.so.1 ${X_STAGING_FSROOT}/lib/
-${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libsbuf.so.6 ${X_STAGING_FSROOT}/lib/
-${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libbsdxml.so.4 ${X_STAGING_FSROOT}/lib/
+${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/lib80211.so.1 ${X_STAGING_FSROOT}/lib
+${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libsbuf.so.6 ${X_STAGING_FSROOT}/lib
+${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libbsdxml.so.4 ${X_STAGING_FSROOT}/lib
+${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libcrypto.so.8 ${X_STAGING_FSROOT}/lib
+${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libmd.so.6 ${X_STAGING_FSROOT}/lib
+${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libalias.so.7 ${X_STAGING_FSROOT}/lib
+${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/libradius.so.4 ${X_STAGING_FSROOT}/usr/lib
+${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/libnetgraph.so.4 ${X_STAGING_FSROOT}/usr/lib
 
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/libgpio.so.0 ${X_STAGING_FSROOT}/usr/lib/
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libxo.so.0 ${X_STAGING_FSROOT}/lib/
+
+# needed by pkill
+${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libkvm.so.7 ${X_STAGING_FSROOT}/lib/
+${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libjail.so.1 ${X_STAGING_FSROOT}/lib/
 
 # RC script
 ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc ${X_STAGING_FSROOT}/etc
@@ -324,8 +335,7 @@ ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/ifdown ${X_STAGING_FSROOT}/sbin/
 # time management
 ${INSTALL_DEF_BIN} ${X_DESTDIR}/bin/date ${X_STAGING_FSROOT}/bin/
 ${INSTALL_DEF_BIN} ${X_DESTDIR}/usr/sbin/ntpdate ${X_STAGING_FSROOT}/usr/sbin/
-# libs for ntpdate
-${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libcrypto.so.8 ${X_STAGING_FSROOT}/lib/
+
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libthr.so.3 ${X_STAGING_FSROOT}/lib/
 
 # dhclient - might be required for the WAN connection
@@ -347,7 +357,8 @@ ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/base/routing ${X_STAGING_FSROOT}/c/et
 ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/base/srv ${X_STAGING_FSROOT}/c/etc/rc.d/base
 ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/srv/cron ${X_STAGING_FSROOT}/c/etc/rc.d/srv
 #${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/srv/inetd ${X_STAGING_FSROOT}/c/etc/rc.d/srv
-${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/srv/ntpdate ${X_STAGING_FSROOT}/c/etc/rc.d/srv/
+${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/srv/ntpdate ${X_STAGING_FSROOT}/c/etc/rc.d/srv
+${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/srv/pppoe ${X_STAGING_FSROOT}/c/etc/rc.d/srv
 ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/net/ether ${X_STAGING_FSROOT}/c/etc/rc.d/net
 ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/net/bridge ${X_STAGING_FSROOT}/c/etc/rc.d/net
 ${INSTALL_DEF_BIN} ${X_BASEDIR}/files/rc.d/net/wifi ${X_STAGING_FSROOT}/c/etc/rc.d/net

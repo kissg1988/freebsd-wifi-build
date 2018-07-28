@@ -1,0 +1,43 @@
+#!/bin/sh
+
+. /etc/rc.subr
+. /etc/rc.conf.default
+. /etc/cfg/rc.conf
+
+case $1 in
+	'start')
+		if [ "${pppoe_enable}" != "YES" ]; then
+			exit 0
+		fi
+
+		# generate config file
+		cat > /etc/ppp/ppp.conf << EOF
+# this file is auto-generated, do not edit!
+default:
+  set ifaddr 10.0.0.1/0 10.0.0.2/0
+
+internet:
+  set device PPPoE:${pppoe_interface}:${pppoe_servicetag}
+  set iface enable tcpmssfix
+  set authname ${pppoe_username}
+  set authkey ${pppoe_password}
+  set dial
+  set login
+  add default HISADDR
+  enable dns
+EOF
+
+		/usr/sbin/ppp -ddial internet
+		exit 0
+		;;
+	'stop')
+		/bin/pkill -f "^/usr/sbin/ppp.*[[:space:]]internet\$" || exit 127
+		exit 0
+		;;
+	*)
+		echo "$0: start|stop"
+		exit 127
+		;;
+esac
+
+exit 0

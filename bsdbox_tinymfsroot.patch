@@ -12,9 +12,18 @@ index 7189f43f092..9833eff7ee4 100644
  .include "Makefile.kld"
  # telnet/telnetd are too broken to include as a crunchgen'ed binary,
 diff --git a/tools/bsdbox/Makefile.base b/tools/bsdbox/Makefile.base
-index 02749490551..97415d19e10 100644
+index 02749490551..faeaf1e7be2 100644
 --- a/tools/bsdbox/Makefile.base
 +++ b/tools/bsdbox/Makefile.base
+@@ -5,7 +5,7 @@
+ # $FreeBSD$
+ #
+ CRUNCH_PROGS_sbin+=	dmesg sysctl init reboot
+-CRUNCH_PROGS_bin+=	ls cat dd df cp hostname kill mkdir sleep ps
++CRUNCH_PROGS_bin+=	ls cat dd df cp hostname kill pkill mkdir sleep ps
+ CRUNCH_PROGS_bin+=	ln rm kenv mv expr
+ CRUNCH_PROGS_usr.bin+=	true false hexdump tail nc w head uname tset
+ CRUNCH_PROGS_usr.sbin+=	gpioctl
 @@ -34,6 +34,9 @@ CRUNCH_BUILDTOOLS+=	bin/sh
  CRUNCH_PROGS_usr.sbin+=	chown
  CRUNCH_ALIAS_chown=	chgrp
