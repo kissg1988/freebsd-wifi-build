@@ -96,7 +96,7 @@ if [ -n "${MFSROOT_INC_MODULE_LIST}" ]; then
 fi
 
 # Always build modules needed for PPPoE
-echo "MODULES_OVERRIDE+=if_tun netgraph ng_ether ng_pppoe ng_socket" >> "${X_DESTDIR}/../make.conf.${BUILDNAME}"
+echo "MODULES_OVERRIDE+=if_tun netgraph" >> "${X_DESTDIR}/../make.conf.${BUILDNAME}"
 
 if [ "$X_SKIP_MORE_STUFF" = "YES" ]; then
 	echo 'WITHOUT_GAMES="YES"' >> ${X_DESTDIR}/../src.conf.${BUILDNAME}
