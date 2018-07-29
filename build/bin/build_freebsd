@@ -92,7 +92,7 @@ fi
 # Ensure all the required modules are built. This is needed to avoid trying to
 # include a module which is not being built as per kernel configuration.
 if [ -n "${MFSROOT_INC_MODULE_LIST}" ]; then
-	echo "MODULES_OVERRIDE+=${MFSROOT_INC_MODULE_LIST}" >> "${X_DESTDIR}/../make.conf.${BUILDNAME}"
+	echo "MODULES_OVERRIDE+=${MFSROOT_INC_MODULE_LIST} if_tun" >> "${X_DESTDIR}/../make.conf.${BUILDNAME}"
 fi
 
 if [ "$X_SKIP_MORE_STUFF" = "YES" ]; then

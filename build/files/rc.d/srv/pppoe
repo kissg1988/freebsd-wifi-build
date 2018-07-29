@@ -26,6 +26,10 @@ internet:
   add default HISADDR
   enable dns
 EOF
+		# create an empty libalias.conf file as needed
+		# ppp needs the file existing even if empty
+		[ ! -f /etc/libalias.conf ] && \
+			echo > /etc/libalias.conf
 
 		/usr/sbin/ppp -ddial internet
 		exit 0
