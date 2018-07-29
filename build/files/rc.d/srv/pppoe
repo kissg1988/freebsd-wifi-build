@@ -18,18 +18,27 @@ default:
 
 internet:
   set device PPPoE:${pppoe_interface}:${pppoe_servicetag}
-  set iface enable tcpmssfix
+  set MRU 1492
+  set MTU 1492
   set authname ${pppoe_username}
   set authkey ${pppoe_password}
   set dial
   set login
-  add default HISADDR
   enable dns
 EOF
 		# create an empty libalias.conf file as needed
-		# ppp needs the file existing even if empty
+		# ppp needs this file even if it's empty
 		[ ! -f /etc/libalias.conf ] && \
 			echo > /etc/libalias.conf
+
+		# add default route in linkup configuration instead of using "add default HISADDR" in ppp.conf
+		# this is needed to workaround a bug reported as #218517
+		cat > /etc/ppp/ppp.linkup << EOF
+# this file is auto-generated, do not edit!
+internet:
+  delete ALL
+  add 0 0 HISADDR
+EOF
 
 		/usr/sbin/ppp -ddial internet
 		exit 0
