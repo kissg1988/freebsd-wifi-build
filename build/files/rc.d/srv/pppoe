@@ -25,6 +25,7 @@ internet:
   set dial
   set login
   enable dns
+  enable tcpmssfixup
 EOF
 		# create an empty libalias.conf file as needed
 		# ppp needs this file even if it's empty
