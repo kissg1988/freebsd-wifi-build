@@ -300,8 +300,12 @@ ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/libnetgraph.so.4 ${X_STAGING_FSROOT}/usr
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/usr/lib/libgpio.so.0 ${X_STAGING_FSROOT}/usr/lib/
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libxo.so.0 ${X_STAGING_FSROOT}/lib/
 
-# if_tun is required by ppp
+# required for PPPoE
 ${INSTALL_DEF_KLD} ${X_DESTDIR}/boot/kernel.${KERNCONF}/if_tun.ko ${X_STAGING_FSROOT}/boot/kernel/
+${INSTALL_DEF_KLD} ${X_DESTDIR}/boot/kernel.${KERNCONF}/netgraph.ko ${X_STAGING_FSROOT}/boot/kernel/
+${INSTALL_DEF_KLD} ${X_DESTDIR}/boot/kernel.${KERNCONF}/ng_ether.ko ${X_STAGING_FSROOT}/boot/kernel/
+${INSTALL_DEF_KLD} ${X_DESTDIR}/boot/kernel.${KERNCONF}/ng_pppoe.ko ${X_STAGING_FSROOT}/boot/kernel/
+${INSTALL_DEF_KLD} ${X_DESTDIR}/boot/kernel.${KERNCONF}/ng_socket.ko ${X_STAGING_FSROOT}/boot/kernel/
 
 # needed by pkill
 ${INSTALL_DEF_LIB} ${X_DESTDIR}/lib/libkvm.so.7 ${X_STAGING_FSROOT}/lib/
