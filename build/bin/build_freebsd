@@ -61,6 +61,10 @@ fi
 echo "" > ${X_DESTDIR}/../make.conf.${BUILDNAME}
 echo "" > ${X_DESTDIR}/../src.conf.${BUILDNAME}
 
+## XXX this is a temporary hack - ofed does not currently build for mips...
+echo "MK_OFED=no" >> ${X_DESTDIR}/../make.conf.${BUILDNAME}
+##
+
 # Make a src.conf
 echo 'KERN_DEBUGDIR=""' > ${X_DESTDIR}/../src.conf.${BUILDNAME}
 
