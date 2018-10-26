@@ -18,8 +18,8 @@ default:
 
 internet:
   set device PPPoE:${pppoe_interface}:${pppoe_servicetag}
-  set MRU 1492
-  set MTU 1492
+  set MRU ${pppoe_mru}
+  set MTU ${pppoe_mtu}
   set authname ${pppoe_username}
   set authkey ${pppoe_password}
   set dial
