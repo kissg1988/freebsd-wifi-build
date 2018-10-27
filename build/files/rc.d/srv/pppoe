@@ -39,6 +39,7 @@ EOF
 internet:
   delete ALL
   add 0 0 HISADDR
+  !bg /etc/rc.d/base/firewall start
 EOF
 
 		/usr/sbin/ppp -ddial internet
